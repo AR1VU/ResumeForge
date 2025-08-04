@@ -1,0 +1,22 @@
+{
+  "name": "Resume Forge",
+  "short_name": "Resume Forge",
+  "description": "Professional resume builder with offline support",
+  "theme_color": "#A3D5FF",
+  "background_color": "#FAFAFA",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
