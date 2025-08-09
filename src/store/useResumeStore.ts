@@ -51,7 +51,7 @@ export interface Template {
 }
 
 export interface UISettings {
-  themeMode: 'light';
+  themeMode: 'light' | 'dark' | 'web3';
   fontScale: number;
   selectedTemplate: string;
   customColors: {

@@ -88,46 +88,7 @@ export const SettingsPage: React.FC = () => {
         </h2>
         
         <div className="space-y-6">
-          {/* Theme Mode */}
-          <SettingCard
-            title="Theme Mode"
-            description="Switch between light, dark, and Web3 themes"
-          >
-            <button
-              onClick={cycleTheme}
-              className="flex items-center px-4 py-2 bg-pastel-blue text-charcoal rounded-lg hover:scale-105 transition-transform duration-150 focus:outline-none focus:ring-2 focus:ring-pastel-blue focus:ring-offset-2"
-            >
-              {uiSettings.themeMode === 'light' ? (
-                <>
-                  <Moon className="w-5 h-5 mr-2" />
-                  Dark Mode
-                </>
-              ) : uiSettings.themeMode === 'dark' ? (
-                <>
-                  <Hexagon className="w-5 h-5 mr-2" />
-                  Web3 Mode
-                </>
-              ) : (
-                <>
-                  <Sun className="w-5 h-5 mr-2" />
-                  Light Mode
-                </>
-              )}
-            </button>
-          </SettingCard>
-
-          {/* Font Family */}
-          <SettingCard
-            title="Font Family"
-            description="Choose your preferred font family for the interface"
-          >
-            <select className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-charcoal dark:text-off-white focus:ring-2 focus:ring-pastel-blue focus:border-transparent">
-              <option value="inter">Inter</option>
-              <option value="roboto">Roboto</option>
-              <option value="open-sans">Open Sans</option>
-            </select>
-          </SettingCard>
-
+          
           {/* Export Data */}
           <SettingCard
             title="Export Resume Data"

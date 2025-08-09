@@ -10,7 +10,6 @@ interface SidebarProps {
 const navigationItems = [
   { id: 'personal', label: 'Personal Info', icon: User },
   { id: 'sections', label: 'Sections', icon: Folder },
-  { id: 'templates', label: 'Templates', icon: Palette },
   { id: 'preview', label: 'Preview', icon: Eye },
   { id: 'settings', label: 'Settings', icon: Settings },
 ];

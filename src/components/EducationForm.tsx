@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Save, X, Calendar, MapPin, GraduationCap } from 'lucide-react';
 import { RichTextEditor } from './RichTextEditor';
+import { useResumeStore } from '../store/useResumeStore';
 
 interface EducationData {
   school: string;
@@ -25,6 +26,9 @@ export const EducationForm: React.FC<EducationFormProps> = ({
   onSave,
   onCancel,
 }) => {
+  const { uiSettings } = useResumeStore();
+  const isWeb3Theme = uiSettings.themeMode === 'web3';
+  
   const [formData, setFormData] = useState<EducationData>(
     initialData || {
       school: '',
