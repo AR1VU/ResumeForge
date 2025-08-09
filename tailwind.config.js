@@ -8,18 +8,6 @@ export default {
         'off-white': '#FAFAFA',
         'pastel-blue': '#A3D5FF',
         'pastel-mint': '#B2F2BB',
-        // Web3 theme colors
-        'web3-dark': '#1a1b23',
-        'web3-darker': '#0f1015',
-        'web3-gray': '#2a2d3a',
-        'web3-light-gray': '#3a3d4a',
-        'web3-accent': '#6366f1', // Indigo
-        'web3-secondary': '#8b5cf6', // Purple
-        'web3-success': '#10b981', // Emerald
-        'web3-warning': '#f59e0b', // Amber
-        'web3-text': '#e2e8f0',
-        'web3-text-muted': '#94a3b8',
-        'web3-border': '#374151',
         primary: '#A3D5FF',
         secondary: '#B2F2BB',
       },

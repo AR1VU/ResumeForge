@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Save, X, Calendar, MapPin, Briefcase } from 'lucide-react';
 import { RichTextEditor } from './RichTextEditor';
+import { useResumeStore } from '../store/useResumeStore';
 
 interface ExperienceData {
   company: string;
@@ -203,7 +204,7 @@ export const ExperienceForm: React.FC<ExperienceFormProps> = ({
         </label>
         <RichTextEditor
           value={formData.description}
-          onChange={(e) => handleInputChange('description', e.target.value)}
+          onChange={(value) => handleInputChange('description', value)}
           placeholder="Describe your responsibilities, achievements, and key accomplishments in this role..."
           height="200px"
         />

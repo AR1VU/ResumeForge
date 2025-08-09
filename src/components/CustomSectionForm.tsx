@@ -109,7 +109,7 @@ export const CustomSectionForm: React.FC<CustomSectionFormProps> = ({
         </label>
         <RichTextEditor
           value={formData.content}
-          onChange={(e) => handleInputChange('content', e.target.value)}
+          onChange={(value) => handleInputChange('content', value)}
           placeholder="Enter the content for this section..."
           height="250px"
         />

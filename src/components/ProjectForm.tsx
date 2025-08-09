@@ -239,7 +239,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
         </label>
         <RichTextEditor
           value={formData.description}
-          onChange={(e) => handleInputChange('description', e.target.value)}
+          onChange={(value) => handleInputChange('description', value)}
           placeholder="Describe the project, your role, challenges faced, and key achievements..."
           height="200px"
         />

@@ -51,7 +51,7 @@ export interface Template {
 }
 
 export interface UISettings {
-  themeMode: 'light' | 'dark' | 'web3';
+  themeMode: 'light';
   fontScale: number;
   selectedTemplate: string;
   customColors: {
@@ -82,7 +82,6 @@ interface ResumeStore {
   
   // Template actions
   selectTemplate: (templateId: string) => void;
-  setThemeMode: (mode: 'light' | 'dark' | 'web3') => void;
   setFontScale: (scale: number) => void;
   updateCustomColors: (colors: Partial<UISettings['customColors']>) => void;
   updateCustomFonts: (fonts: Partial<UISettings['customFonts']>) => void;
@@ -139,24 +138,6 @@ const defaultTemplates: Template[] = [
     },
     fonts: {
       heading: 'Merriweather',
-      body: 'Inter',
-    },
-  },
-  {
-    id: 'web3',
-    name: 'Web3 Minimal',
-    margins: { top: 25, bottom: 25, left: 25, right: 25 },
-    fontSize: { heading: 26, body: 15 },
-    headingStyle: { weight: 600, color: '#6366f1' },
-    colors: {
-      primary: '#6366f1',
-      secondary: '#8b5cf6',
-      accent: '#10b981',
-      text: '#e2e8f0',
-      background: '#1a1b23',
-    },
-    fonts: {
-      heading: 'Inter',
       body: 'Inter',
     },
   },
@@ -245,11 +226,6 @@ export const useResumeStore = create<ResumeStore>()(
       selectTemplate: (templateId) =>
         set((state) => ({
           uiSettings: { ...state.uiSettings, selectedTemplate: templateId },
-        })),
-
-      setThemeMode: (mode) =>
-        set((state) => ({
-          uiSettings: { ...state.uiSettings, themeMode: mode },
         })),
 
       setFontScale: (scale) =>

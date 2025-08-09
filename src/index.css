@@ -52,6 +52,75 @@
   .ql-editor strong {
     font-weight: 600;
   }
+
+  /* Section entry styles */
+  .education-entry, .experience-entry, .project-entry {
+    margin-bottom: 1.5rem;
+  }
+
+  .education-header, .experience-header, .project-header {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: #1f2937;
+  }
+
+  .dark .education-header, .dark .experience-header, .dark .project-header {
+    color: #f9fafb;
+  }
+
+  .education-school, .experience-company {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: #374151;
+  }
+
+  .dark .education-school, .dark .experience-company {
+    color: #e5e7eb;
+  }
+
+  .education-dates, .experience-dates, .project-dates {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+  }
+
+  .dark .education-dates, .dark .experience-dates, .dark .project-dates {
+    color: #9ca3af;
+  }
+
+  .education-gpa {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+  }
+
+  .dark .education-gpa {
+    color: #9ca3af;
+  }
+
+  .project-technologies, .project-url, .project-github {
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+    color: #374151;
+  }
+
+  .dark .project-technologies, .dark .project-url, .dark .project-github {
+    color: #e5e7eb;
+  }
+
+  .project-url a, .project-github a {
+    color: #3b82f6;
+    text-decoration: underline;
+  }
+
+  .dark .project-url a, .dark .project-github a {
+    color: #60a5fa;
+  }
+
+  .education-description, .experience-description, .project-description {
+    margin-top: 0.75rem;
+  }
 }
 
 @layer components {
@@ -169,10 +238,8 @@
 }
 
 /* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .dark {
-    color-scheme: dark;
-  }
+.dark {
+  color-scheme: dark;
 }
 
 /* Web3 theme support */
@@ -222,6 +289,35 @@
 .web3 textarea:focus {
   border-color: #6366f1 !important;
   box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
+}
+
+/* Web3 theme label and text colors */
+.web3 label {
+  color: #e2e8f0 !important;
+}
+
+.web3 .text-gray-700 {
+  color: #e2e8f0 !important;
+}
+
+.web3 .text-gray-600 {
+  color: #94a3b8 !important;
+}
+
+.web3 .text-gray-500 {
+  color: #64748b !important;
+}
+
+.web3 .text-gray-400 {
+  color: #64748b !important;
+}
+
+.web3 h1, .web3 h2, .web3 h3, .web3 h4, .web3 h5, .web3 h6 {
+  color: #e2e8f0 !important;
+}
+
+.web3 p {
+  color: #94a3b8 !important;
 }
 
 /* Focus styles for accessibility */

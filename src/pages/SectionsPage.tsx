@@ -61,25 +61,37 @@ const SectionCard: React.FC<{ section: Section; onUpdate: (id: string, updates: 
     
     switch (section.type) {
       case 'Education':
-        formattedContent = `${data.degree} in ${data.fieldOfStudy}
-${data.school}${data.location ? `, ${data.location}` : ''}
-${data.startDate} - ${data.isCurrentlyStudying ? 'Present' : data.endDate}
-${data.gpa ? `GPA: ${data.gpa}` : ''}
-${data.description ? `\n${data.description}` : ''}`;
+        formattedContent = `<div class="education-entry">
+  <div class="education-header">
+    <strong>${data.degree} in ${data.fieldOfStudy}</strong>
+  </div>
+  <div class="education-school">${data.school}${data.location ? `, ${data.location}` : ''}</div>
+  <div class="education-dates">${data.startDate} - ${data.isCurrentlyStudying ? 'Present' : data.endDate}</div>
+  ${data.gpa ? `<div class="education-gpa">GPA: ${data.gpa}</div>` : ''}
+  ${data.description ? `<div class="education-description">${data.description}</div>` : ''}
+</div>`;
         break;
       case 'Experience':
-        formattedContent = `${data.position}
-${data.company}${data.location ? `, ${data.location}` : ''}
-${data.startDate} - ${data.isCurrentlyWorking ? 'Present' : data.endDate} • ${data.employmentType}
-${data.description}`;
+        formattedContent = `<div class="experience-entry">
+  <div class="experience-header">
+    <strong>${data.position}</strong>
+  </div>
+  <div class="experience-company">${data.company}${data.location ? `, ${data.location}` : ''}</div>
+  <div class="experience-dates">${data.startDate} - ${data.isCurrentlyWorking ? 'Present' : data.endDate} • ${data.employmentType}</div>
+  ${data.description ? `<div class="experience-description">${data.description}</div>` : ''}
+</div>`;
         break;
       case 'Projects':
-        formattedContent = `${data.name}
-${data.startDate} - ${data.isOngoing ? 'Ongoing' : data.endDate}
-${data.technologies.length > 0 ? `Technologies: ${data.technologies.join(', ')}` : ''}
-${data.projectUrl ? `Project URL: ${data.projectUrl}` : ''}
-${data.githubUrl ? `GitHub: ${data.githubUrl}` : ''}
-${data.description}`;
+        formattedContent = `<div class="project-entry">
+  <div class="project-header">
+    <strong style="color: #fff">${data.name}</strong>
+  </div>
+  <div class="project-dates">${data.startDate} - ${data.isOngoing ? 'Ongoing' : data.endDate}</div>
+  ${data.technologies.length > 0 ? `<div class="project-technologies">Technologies: ${data.technologies.join(', ')}</div>` : ''}
+  ${data.projectUrl ? `<div class="project-url">Project URL: <a href="${data.projectUrl}" target="_blank">${data.projectUrl}</a></div>` : ''}
+  ${data.githubUrl ? `<div class="project-github">GitHub: <a href="${data.githubUrl}" target="_blank">${data.githubUrl}</a></div>` : ''}
+  ${data.description ? `<div class="project-description">${data.description}</div>` : ''}
+</div>`;
         break;
       case 'Custom':
         formattedContent = data.content;
@@ -139,9 +151,10 @@ ${data.description}`;
       <div className="space-y-4">
         {section.content ? (
           <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
-            <div className="whitespace-pre-wrap text-gray-700 dark:text-gray-300">
-              {section.content}
-            </div>
+            <div 
+              className="text-gray-700 dark:text-gray-300"
+              dangerouslySetInnerHTML={{ __html: section.content }}
+            />
           </div>
         ) : (
           <div className="text-center py-8 text-gray-500 dark:text-gray-400">
@@ -164,15 +177,19 @@ ${data.description}`;
               Edit with form
             </button>
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              {section.content.trim().split(/\s+/).filter(word => word.length > 0).length} words
+              {(() => {
+                // Strip HTML tags for word counting
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = section.content;
+                const plainText = tempDiv.textContent || tempDiv.innerText || '';
+                return plainText.trim().split(/\s+/).filter(word => word.length > 0).length;
+              })()} words
             </span>
           </div>
         )}
       </div>
     );
   };
-
-  const wordCount = localContent.trim().split(/\s+/).filter(word => word.length > 0).length;
 
   return (
     <div
@@ -267,17 +284,6 @@ export const SectionsPage: React.FC = () => {
     }
   };
 
-  const getDefaultTitle = (type: Section['type']) => {
-    switch (type) {
-      case 'Education': return 'Education';
-      case 'Experience': return 'Work Experience';
-      case 'Skills': return 'Skills';
-      case 'Projects': return 'Projects';
-      case 'Custom': return 'Custom Section';
-      default: return `New ${type} Section`;
-    }
-  };
-
   const sectionTypes: Section['type'][] = ['Education', 'Experience', 'Skills', 'Projects', 'Custom'];
 
   return (
@@ -306,7 +312,7 @@ export const SectionsPage: React.FC = () => {
               Add Section
             </button>
             {showAddMenu && (
-              <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-10">
+              <div style={{color: "#ffffff"}} className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-10">
                 {sectionTypes.map((type) => {
                   const Icon = sectionIcons[type];
                   return (
